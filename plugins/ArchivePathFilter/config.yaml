@@ -1,0 +1,32 @@
+name: ArchivePath Filter
+id: ArchivePathFilter
+version: 0.1
+schema_version: 3
+author_name: Yuichi Takeuchi
+description: <__trans phrase="_PLUGIN_DESCRIPTION">
+l10n_class: ArchivePathFilter::L10N
+
+list_properties:
+    entry:
+        filter_archive_path: $ArchivePathFilter::ArchivePathFilter::Plugin::list_prop
+    page: 
+        filter_archive_path: $ArchivePathFilter::ArchivePathFilter::Plugin::list_prop
+
+object_types:
+    entry:
+        filter_archive_path: string(255)
+
+callbacks:
+    MT::Page::pre_save: $ArchivePathFilter::ArchivePathFilter::Plugin::cb_pre_save
+    set_notification_dashboard: $ArchivePathFilter::ArchivePathFilter::Plugin::cb_set_notification_dashboard
+
+applications:
+    cms:
+        methods:
+            install_archive_path_filter: $ArchivePathFilter::ArchivePathFilter::Plugin::install_archive_path_filter
+            do_install_archive_path_filter: $ArchivePathFilter::ArchivePathFilter::Plugin::do_install_archive_path_filter
+
+settings:
+    installed:
+        default: 0
+        scope: system

@@ -1,0 +1,23 @@
+<mt:setvarblock name="page_title"><__trans phrase="Store archive paths" /></mt:setvarblock>
+<mt:setvar name="position_actions_bottom" value="1">
+
+<mt:include name="include/header.tmpl">
+
+<mt:setvarblock name="action_buttons">
+  <button
+     type="submit"
+     accesskey="s"
+     title="<__trans phrase="Store archive paths">"
+     class="send action primary button">
+    <__trans phrase="Start">
+  </button>
+</mt:setvarblock>
+
+
+<form action="<$MTVar name='script_url'$>" method="POST">
+    <input type="hidden" name="__mode" value="do_install_archive_path_filter" />
+    <input type="hidden" name="magic_token" value="<mt:var name="magic_token">" />
+    <mt:include name="include/actions_bar.tmpl" bar_position="bottom" hide_pager="1" settings_bar="1" />
+</form>
+
+<mt:include name="include/footer.tmpl">

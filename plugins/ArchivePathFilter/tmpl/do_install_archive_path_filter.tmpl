@@ -1,0 +1,20 @@
+<mt:setvarblock name="page_title"><__trans phrase="Store archive paths" /></mt:setvarblock>
+<mt:setvar name="position_actions_bottom" value="1">
+
+<mt:include name="include/header.tmpl">
+
+<p>Storing...(The remnant number of <mt:var name='remnant'>)</p>
+
+<form id="next_step" action="<$MTVar name='script_url'$>" method="GET">
+    <input type="hidden" name="__mode" value="do_install_archive_path_filter" />
+    <input type="hidden" name="magic_token" value="<mt:var name="magic_token">" />
+    <input type="hidden" name="page" value="<mt:var name="next_page">" />
+</form>
+
+<mt:SetVarBlock name="jq_js_include" append="1">
+jQuery(function(){
+    jQuery('#next_step').submit();
+});
+</mt:SetVarBlock>
+
+<mt:include name="include/footer.tmpl">
