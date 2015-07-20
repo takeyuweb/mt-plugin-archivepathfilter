@@ -11,9 +11,7 @@ sub list_prop {
 
 sub cb_pre_save {
     my ( $cb, $obj, $original ) = @_;
-    if ( my $blog = $obj->blog ) {
-        $obj->filter_archive_path( $obj->archive_file() );
-    }
+    $obj->filter_archive_path( $obj->archive_file() );
     1;
 }
 
@@ -44,16 +42,16 @@ sub do_install_archive_path_filter {
     my $limit = 100;
     my $page = $app->param( 'page' ) || 1;
     my $offset = ($page - 1) * $limit;
-    my @entries = MT->model( 'entry' )->load( { class => '*' }, { offset => $offset, limit => $limit } );
-    foreach my $obj ( @entries ) {
+    my @pages = MT->model( 'page' )->load( undef, { offset => $offset, limit => $limit } );
+    foreach my $obj ( @pages ) {
         if ( my $blog = $obj->blog ) {
             $obj->filter_archive_path( $obj->archive_file() );
             $obj->save or die $obj->errstr;
         }
     }
     
-    my $total = MT->model( 'entry' )->count( { class => '*' } );
-    my $current = $offset + scalar( @entries );
+    my $total = MT->model( 'page' )->count();
+    my $current = $offset + scalar( @pages );
     my $remnant = $total - $current;
     if ( $remnant ) {
         my %params = (
