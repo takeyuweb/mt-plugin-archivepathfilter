@@ -8,7 +8,7 @@ ArchivePath Filter プラグイン
 
 ウェブページの書き出しパスでの検索フィルタを管理画面に追加します。
 
-![利用イメージ](https://raw.githubusercontent.com/takeyuweb/mt-plugin-archivepathfilter/master/ArchivePathFilter.png)
+![利用イメージ](https://raw.githubusercontent.com/takeyuweb/mt-plugin-archivepathfilter/master/ArchivePathFilter_2.png)
 
 大量の階層化されたフォルダで管理された記事を探したいときなど、「フォルダ」の検索フィルタではサブフォルダが考慮されず使いづらいと指摘されたので作りました。
 
